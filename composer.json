@@ -8,7 +8,8 @@
     ],
     "bin": [
       "bin/xdebug",
-      "bin/nxdebug"
+      "bin/xdebug-enabled",
+      "bin/xdebug-disabled"
     ],
     "authors": [
         {
