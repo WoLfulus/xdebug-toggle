@@ -47,8 +47,8 @@
     "prefer-stable": true,
     "scripts": {
       "xdebug": "php bin/xdebug",
-      "xdebug-enabled": "php bin/xdebug",
-      "xdebug-disabled": "php bin/xdebug",
+      "xdebug-enabled": "php bin/xdebug-enabled",
+      "xdebug-disabled": "php bin/xdebug-disabled",
       "format": "php-cs-fixer --ansi fix",
       "insights": "phpinsights -v",
       "metrics": "phpmetrics --report-html=./dist/metrics ./src",

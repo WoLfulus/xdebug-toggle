@@ -30,6 +30,9 @@ immediately after the `xdebug` command if you want to run with it disabled. Ther
 - `xdebug --disable file.php`
 - `xdebug-enabled file.php`
 - `xdebug-disabled file.php`
+- `xdebug -r "echo extension_loaded('xdebug') ? 'loaded' : 'not loaded';"`
+- `xdebug --disable -r "echo extension_loaded('xdebug') ? 'loaded' : 'not loaded';"`
+- `xdebug --help`
 
 # License
 
