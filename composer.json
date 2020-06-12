@@ -1,7 +1,7 @@
 {
     "name": "wolfulus/xdebug-toggle",
     "description": "XDebug Toggle.",
-    "type": "library",
+    "type": "project",
     "license": "MIT",
     "keywords": [
       "template"
@@ -19,7 +19,6 @@
     ],
     "require": {
         "php": ">=7.2",
-        "symfony/process": "^5.1",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
@@ -43,7 +42,7 @@
         "WoLfulus\\XDebug\\Tests\\": "tests/"
       }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
       "xdebug": "php bin/xdebug",
