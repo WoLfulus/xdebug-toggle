@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+$root = __DIR__.'/../';
+if (file_exists($root.'vendor/autoload.php')) {
+    $autoload = require $root.'vendor/autoload.php';
+} elseif (file_exists($root.'../../autoload.php')) {
+    $autoload = include $root.'../../autoload.php';
+} else {
+    echo 'Unable to autoload classes.'.PHP_EOL;
+    exit(1);
+}
+
+use WoLfulus\XDebug\Php;
+
+$xdebug = true;
+array_shift($argv);
+if ((sizeof($argv) > 1) && $argv[0] === "--disable") {
+    array_shift($argv);
+    $xdebug = false;
+}
+
+Php::execute($argv, $xdebug);

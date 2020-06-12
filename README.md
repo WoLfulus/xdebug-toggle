@@ -1,63 +1,36 @@
-# PHP Template
+# XDebug Toggle
 
-This is an **opinionated** project template that includes some repetitive and time consuming setups.
+Toggles PHP XDebug extensions.
 
-## Sources
+# How it works?
 
-Source folder `src` with a code file.
+This package detects where your `php.ini` file is located and creates two copies on the same folder with `-xdebug-enabled`
+and `-xdebug-disabled` suffix to them.
 
-## Tests
+Any changes made to those files will reset because it keeps those files in sync whenever you run the commands.
 
-Tests folder `tests` with a test file. Uses `phpunit` to execute tests.
+In order to enable/disable XDebug, the package tries to identify the library name and location, like `xdebug.so` and
+`xdebug-2.9.4-7.4-vc15-nts-x86_64`) on the original `php.ini` file. You MUST have at least a line containing
+`zend_extension=...xdebug` on your original `php.ini` file in order for it to work, even if it's commented out with a `;`.
 
-> `composer test`
+The `xdebug` command is just a wrapper over `php` executable that disables the original `php.ini` loading and loads one of
+the copies instead.
 
-### Code coverage
+By running `xdebug [...php args]` you're running a PHP instance with XDebug `enabled`. The `xdebug` accepts a `--disable` flag
+immediately after the `xdebug` command if you want to run with it disabled. There's also two additional commands
+`xdebug-enabled` and `xdebug-disabled` that does the exact same thing but without the flags.
 
-Tests also generates coverage reports.
+## Installation
 
-## Formatting
+- `composer global require wolfulus/xdebug-toggle`
 
-File formatter, that can automatically fix fix source files. Uses `php-cs-fixer` to format files.
+## Usage
 
-> `composer format`.
+- `xdebug file.php`
+- `xdebug --disable file.php`
+- `xdebug-enabled file.php`
+- `xdebug-disabled file.php`
 
-## Style checks
+# License
 
-Checks for files that doesn't conform with the project style rules. Uses `php-cs-fixer` to check files.
-
-> `composer lint:php-cs-fixer`
-
-## Static analysis
-
-Static code analysis. Uses `phpstan` with `phpstan-strict-rules`.
-
-> `composer lint:phpstan`
-
-## Linter
-
-Can run both style checks and static analysis.
-
-> `composer lint`
-
-## Code quality
-
-Code quality analysis. Uses `phpinsights` for quality checks.
-
-> `composer insights`
-
-## Code metrics
-
-Code metrics report with complexity, volume, maintainability and more. Uses `phpmetrics` to provide project metrics.
-
-> `composer metrics`
-
-## CI
-
-Provides a GitHub workflow to run tests and linter. Caches composer dependencies, and uses `hirak/prestissimo` to speed up installations.
-
-> `composer ci`
-
-## Integrations
-
-Provides basic configuration integration to [SonarCloud](https://sonarcloud.io) and [Coveralls](https://coveralls.io)
+MIT

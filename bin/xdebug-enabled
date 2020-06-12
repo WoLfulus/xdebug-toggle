@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+$root = __DIR__.'/../';
+if (file_exists($root.'vendor/autoload.php')) {
+    $autoload = require $root.'vendor/autoload.php';
+} elseif (file_exists($root.'../../autoload.php')) {
+    $autoload = include $root.'../../autoload.php';
+} else {
+    echo 'Unable to autoload classes.'.PHP_EOL;
+    exit(1);
+}
+
+use WoLfulus\XDebug\Php;
+
+array_shift($argv);
+Php::execute($argv, true);
